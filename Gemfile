@@ -21,7 +21,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'nokogiri'
+gem 'mechanize'
 gem 'awesome_print'
 
 group :test, :development do

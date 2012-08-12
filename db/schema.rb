@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120811042404) do
+ActiveRecord::Schema.define(:version => 20120812204041) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -20,6 +20,24 @@ ActiveRecord::Schema.define(:version => 20120811042404) do
     t.datetime "end_time"
     t.integer  "venue_id"
     t.string   "chaos"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "url"
+  end
+
+  create_table "events_panelists", :id => false, :force => true do |t|
+    t.integer "event_id"
+    t.integer "panelist_id"
+  end
+
+  add_index "events_panelists", ["event_id", "panelist_id"], :name => "index_events_panelists_on_event_id_and_panelist_id"
+  add_index "events_panelists", ["panelist_id", "event_id"], :name => "index_events_panelists_on_panelist_id_and_event_id"
+
+  create_table "panelists", :force => true do |t|
+    t.string   "name"
+    t.text     "title"
+    t.string   "affiliation"
+    t.string   "twitter"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -36,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20120811042404) do
     t.float    "longitude"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "code"
   end
 
 end
