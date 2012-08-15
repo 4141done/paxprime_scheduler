@@ -38,6 +38,7 @@ namespace :events do
 
       events.each do |event|
         new_event = Event.new
+        new_event.day = day.upcase
         new_event.venue = Venue.find_by_code event.attribute("class").text.split(" ")[1]
         event_link = event.search("a")
         # populat title and url

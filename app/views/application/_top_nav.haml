@@ -1,0 +1,30 @@
+#header
+  - if flash[:welcome]
+    #welcome_message{:style => "background-color: blue; color: white; font-size: 16px;"}
+      =flash[:welcome]
+      #close_welcome_button{:style => "height: 40px; width: 100px; background-color: green;"}
+        Kill me
+  %h1 
+  Scheduler
+  %span
+    %a My Schedule
+    |
+    %a{:id => "conference_schedule"} Conference Schedule
+    %a{:style => "color: green; font-weight: bold;"}
+      - if @user
+        = "Welcome back, #{@user.identifier}"
+    #conference_schedule_filters
+      Search by:
+      %a{:id => "search_day", :href => "#"} Search by Day
+      %a{:id => "search_friday", :href => "#"} Friday
+      %a{:id => "search_saturday", :href => "#"} Saturday
+      %a{:id => "search_sunday", :href => "#"} Sunday
+      %br
+      Panelist:
+      %span
+        = select_tag "panelist", options_from_collection_for_select(@panelists, "id", "name")
+      %br
+      = form_tag '/events/search', :remote => true, id: "search_form" do
+        = text_field_tag :query, nil, :id => "search_box"
+        = submit_tag "Search Motherfucker", :id => "search_button"
+
