@@ -16,7 +16,7 @@ class EventsController < ApplicationController
   end
 
   def search
-    ap @current_user
+    @user = @current_user
     query = params[:query]
     @results = Event.where "description LIKE ? OR name LIKE ?", "%#{query}%", "%#{query}%" #TODO add panelist search
     @events = []

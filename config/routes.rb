@@ -5,6 +5,9 @@ PaxprimeScheduler::Application.routes.draw do
       post :search
     end
   end
+
+  match 'schedule_entries/create' => 'schedule_entries#create'
+  resources :schedules
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,9 +1,13 @@
-.event{:style => "border: 1px solid black; margin-bottom: 5px; width: 800px;"}
+.event
   Name:
-  %a{:href => event.url} 
+  %a{:href => event.url, :class => "event_title"} 
     =event.name
-  %span
-    %a{:href => "#"} Add this to my schedule
+  - if @user
+    %span
+      - if @user.schedule.schedule_entries.find_by_event_id(event.id).is_a? ScheduleEntry
+        %a{ :href => "#", :id => event.id, :class => "schedule_remove" } X
+  - else
+    %a{ :href => "#", :id => event.id, :class => "schedule_add" } +
   %br
   Location:
   = event.venue.name

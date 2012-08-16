@@ -1,10 +1,8 @@
 class SchedulesController < ApplicationController
-  def new
-    
-    render :layour => false
-  end
-
-  def create
+  def show
+    @user = User.find_by_identifier(params[:user])
+    @schedule = @user.schedule
+    render :layout => false
   end
 
 end
