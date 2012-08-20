@@ -1,0 +1,117 @@
+
+$red: #EA2E49;
+$light-blue: #DAEDE2;
+$base-teal: #77C4D3;
+$light-black: #333745;
+$yellow: #F6F792;
+$main-font: Century Gothic, sans-serif;
+
+body{
+  font-family: $main-font;
+  background-color: $base-teal;
+  a{
+    cursor:pointer;
+  }
+  h1 {
+    font-size: 48px;
+  }
+}
+
+.divLeft {
+  display:block;
+  float: left;
+}
+
+.divRight {
+  display:block;
+  float: right;
+}
+
+.noUnderline{
+  text-decoration:none
+}
+
+#nav_bar {
+  #welcome_message {
+    #close_welcome_button {
+
+    }
+  }
+
+  #title{
+    font-weight: 999;
+  }
+
+  #search_box {
+    margin-top: 10px;
+    font-size: 48px;
+    width: 12em;
+  }
+
+  #search_button {
+    margin-bottom:20px;
+    font-size:30px;
+    padding: 10px 15px;
+    background: $light-black;
+    color: #FFF;
+  }
+
+  #days{
+    margin: none;
+    padding:none;
+    font-size: 25px !important;
+    #search_friday {
+      background-color: $red;
+      width: 100px;
+      padding: 5px;
+    }
+    #search_saturday{
+      width: 100px;
+      padding: 5px;
+      background-color: $yellow;
+    }
+    #search_sunday{
+      width: 100px;
+      padding: 5px;
+      background-color: $light-blue;
+    }
+  }
+}
+
+#content_box {
+  width: 1200px;
+
+  .event {
+    background-color: $light-black;
+    border: 10px solid $light-black;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    width: 1000px;
+
+    .event_content {
+      padding:5px;
+      background-color: $base-teal;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+    }
+
+    .peek{
+      color: white;
+      font-size: 30px;
+      a{
+        text-decoration: none !important;
+        color:white;
+        margin-bottom:5px;
+      }
+      .event_title {
+      }
+
+      .schedule_remove{
+      }
+
+      .schedule_add{
+      }
+    }
+  }
+}

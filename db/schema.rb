@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(:version => 20120813060405) do
 
   create_table "events", :force => true do |t|
-    t.string   "name"
+    t.text     "name"
     t.text     "description"
     t.datetime "start_time"
     t.datetime "end_time"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20120813060405) do
     t.string   "chaos"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.string   "url"
+    t.text     "url"
     t.string   "day"
   end
 
@@ -35,10 +35,10 @@ ActiveRecord::Schema.define(:version => 20120813060405) do
   add_index "events_panelists", ["panelist_id", "event_id"], :name => "index_events_panelists_on_panelist_id_and_event_id"
 
   create_table "panelists", :force => true do |t|
-    t.string   "name"
+    t.text     "name"
     t.text     "title"
-    t.string   "affiliation"
-    t.string   "twitter"
+    t.text     "affiliation"
+    t.text     "twitter"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(:version => 20120813060405) do
   create_table "schedule_entries", :force => true do |t|
     t.integer "schedule_id"
     t.integer "event_id"
-    t.string  "notes"
+    t.text    "notes"
   end
 
   create_table "schedules", :force => true do |t|
@@ -54,17 +54,17 @@ ActiveRecord::Schema.define(:version => 20120813060405) do
   end
 
   create_table "users", :force => true do |t|
-    t.string "identifier"
-    t.string "email"
+    t.text "identifier"
+    t.text "email"
   end
 
   create_table "venues", :force => true do |t|
-    t.string   "name"
+    t.text     "name"
     t.text     "description"
-    t.string   "address"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip"
+    t.text     "address"
+    t.text     "city"
+    t.text     "state"
+    t.text     "zip"
     t.string   "chaos"
     t.float    "latitude"
     t.float    "longitude"

@@ -3,13 +3,32 @@ $(document).ready(function() {
   history.pushState({1:1}, "user", user);
 
   function prep_events(){
+    $('.event_title').click(function(){
+      $(this).parent().next().slideToggle(200);
+    });
+
     $('.schedule_add').click(function(){
-        var my_event = $(this);
+      var my_event = $(this),
+          whole_event = $(this).closest('.event');
       $.ajax({
         url: "/schedule_entries/create?user=" + user + "&event_id=" + my_event.attr('id'),
         cache: false,
         success: function(html){
-          my_event.html("Motherfuckin' added!");
+          my_event.html("YEAH!");
+          whole_event.css('background-color', 'green');
+          whole_event.css('border-color', 'green');
+        }
+      });
+    });
+
+    $('.schedule_remove').click(function(){
+      var my_event = $(this),
+          whole_event = $(this).closest('.event');
+      $.ajax({
+        url: "/schedule_entries/create?user=" + user + "&event_id=" + my_event.attr('id'),
+        cache: false,
+        success: function(html){
+          whole_event.slideUp(200);
         }
       });
     });
@@ -61,6 +80,23 @@ $(document).ready(function() {
       }
     });
   });
+  $(".day").mouseenter(function(){
+    $(this).animate({
+      width: '+=10px',
+      height: '+=10',
+    }, 200, function() {
+    // Animation complete.
+    });
+  });
+  $(".day").mouseleave(function(){
+    $(this).animate({
+      width: '-=10',
+      height: '-=10',
+    }, 200, function() {
+    // Animation complete.
+    });
+  });
+
   $("#search_sunday").click(function(){
     $.ajax({
       url: "/events/show?day=SUNDAY",

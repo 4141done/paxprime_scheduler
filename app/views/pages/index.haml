@@ -1,3 +1,5 @@
 = stylesheet_link_tag 'index'
-= hidden_field_tag "user_identifier", @user.identifier
+= stylesheet_link_tag 'select2'
+= javascript_include_tag 'select2'
+= hidden_field_tag "user_identifier", @current_user.identifier
 #content_box{:style => "width: 900px;"}

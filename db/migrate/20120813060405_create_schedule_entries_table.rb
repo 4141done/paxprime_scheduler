@@ -3,7 +3,7 @@ class CreateScheduleEntriesTable < ActiveRecord::Migration
     create_table :schedule_entries do |t|
       t.references :schedule
       t.references :event
-      t.string :notes
+      t.text :notes
     end
   end
 
