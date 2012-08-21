@@ -5,8 +5,8 @@
       %a{ :id => "close_welcome_button", :style => "height: 40px; width: 100px; background-color: green; border-radius: 10px; padding: 5px;"}
         Kill me
   %h1#title Scheduler
-  / %a{:id => "my_schedule", :class => "divLeft"} My Schedule
-  / %a{ :class => "divLeft", :style => "color: green; font-weight: bold;"}
+  %a{:id => "my_schedule", :class => "divLeft"} My Schedule
+  %a{ :class => "divLeft", :style => "color: green; font-weight: bold;"}
   #days
     %a.day{:id => "search_friday" } Friday
     %br
@@ -15,7 +15,8 @@
     %a.day{:id => "search_sunday" } Sunday
     %br
   #search_container
-    = form_tag '/events/search', :remote => true, id: "search_form", :class => "divRight" do
+    = form_tag '/events/search', :remote => true, id: "search_form", :class => "divRight", :user => @current_user do
+      = hidden_field_tag "user", @current_user.identifier
       = text_field_tag :query, nil, :id => "search_box"
       = submit_tag "Search!", :id => "search_button"
   

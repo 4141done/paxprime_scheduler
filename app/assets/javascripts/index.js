@@ -24,8 +24,12 @@ $(document).ready(function() {
     $('.schedule_remove').click(function(){
       var my_event = $(this),
           whole_event = $(this).closest('.event');
+
+      console.log('REVOMOORE');
+      console.log(my_event);
+      console.log(whole_event);
       $.ajax({
-        url: "/schedule_entries/create?user=" + user + "&event_id=" + my_event.attr('id'),
+        url: "/schedule_entries/destroy?user=" + user + "&event_id=" + my_event.attr('id'),
         cache: false,
         success: function(html){
           whole_event.slideUp(200);
@@ -42,7 +46,7 @@ $(document).ready(function() {
   $("#panelist").change(function(){
     var panelist = $("#panelist").val();
     $.ajax({
-      url: "/events/show?panelist=" + panelist ,
+      url: "/events/show?panelist=" + panelist + "&user=" + user ,
       cache: false,
       success: function(html){
         $("#content_box").html(html);
@@ -52,7 +56,7 @@ $(document).ready(function() {
   });
   $("#conference_schedule").click(function(){
     $.ajax({
-      url: "/events/show",
+      url: "/events/show?user=" + user,
       cache: false,
       success: function(html){
         $("#content_box").html(html);
@@ -62,7 +66,7 @@ $(document).ready(function() {
   });
   $("#search_friday").click(function(){
     $.ajax({
-      url: "/events/show?day=FRIDAY",
+      url: "/events/show?day=FRIDAY&user=" + user,
       cache: false,
       success: function(html){
         $("#content_box").html(html);
@@ -72,7 +76,7 @@ $(document).ready(function() {
   });
   $("#search_saturday").click(function(){
     $.ajax({
-      url: "/events/show?day=SATURDAY",
+      url: "/events/show?day=SATURDAY&user=" + user,
       cache: false,
       success: function(html){
         $("#content_box").html(html);
@@ -99,7 +103,7 @@ $(document).ready(function() {
 
   $("#search_sunday").click(function(){
     $.ajax({
-      url: "/events/show?day=SUNDAY",
+      url: "/events/show?day=SUNDAY&user=" + user,
       cache: false,
       success: function(html){
         $("#content_box").html(html);

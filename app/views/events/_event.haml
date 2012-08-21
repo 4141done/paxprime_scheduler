@@ -1,14 +1,14 @@
-%div{:class => @current_user.schedule.schedule_entries.find_by_event_id(event.id).is_a?(ScheduleEntry) ? "event.added" : "event" }
+%div{:class => @user.schedule.schedule_entries.find_by_event_id(event.id).is_a?(ScheduleEntry) ? "event added" : "event" }
   .peek
     %a{ :class => "event_title"} 
       =event.name
-    - if @current_user
-      - if @current_user.schedule.schedule_entries.find_by_event_id(event.id).is_a? ScheduleEntry
+    - if @user
+      - if @user.schedule_entries.find_by_event_id(event.id).is_a? ScheduleEntry
         %a.divRight.noUnderline{ :id => event.id, :class => "schedule_remove"} REMOVE
-    - else
-      %a.divRight.noUnderline{ :id => event.id, :class => "schedule_add"} ADD
+      - else
+        %a.divRight.noUnderline{ :id => event.id, :class => "schedule_add"} ADD
 
-  .event_content
+  .event_content{:style => "display: none;"}
     Location:
     = event.venue.name
     %br

@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   def show
-    ap @current_user
+    @user = User.find_by_identifier params[:user]
     options = { :day => params[:day],
                 :start_time => params[:start],
                 :end_time => params[:end],
@@ -15,13 +15,13 @@ class EventsController < ApplicationController
     @events = Event.all unless @events.present?
     ap "HERE THEY BE"
     @events.each do |e|
-      ap @current_user.schedule.schedule_entries.find_by_event_id(e.id).is_a?(ScheduleEntry) ? "event added" : "event"
+      ap @user.schedule.schedule_entries.find_by_event_id(e.id).is_a?(ScheduleEntry) ? "event added" : "event"
     end
     render :layout => false
   end
 
   def search
-    ap @current_user
+    @user = User.find_by_identifier params[:user]
     query = params[:query]
     @results = Event.where "description LIKE ? OR name LIKE ?", "%#{query}%", "%#{query}%" #TODO add panelist search
     @events = []
@@ -31,8 +31,8 @@ class EventsController < ApplicationController
     end
     ap @events
     @events.each do |e|
-      ap @current_user.schedule.schedule_entries.find_by_event_id(e.id)
-      ap @current_user.schedule.schedule_entries.find_by_event_id(e.id).is_a?(ScheduleEntry) ? "event added" : "event"
+      ap @user.schedule.schedule_entries.find_by_event_id(e.id)
+      ap @user.schedule.schedule_entries.find_by_event_id(e.id).is_a?(ScheduleEntry) ? "event added" : "event"
     end
     render :layout => false, :template => 'events/show'
   end
