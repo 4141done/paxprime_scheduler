@@ -24,15 +24,18 @@ $(document).ready(function() {
     $('.schedule_remove').click(function(){
       var my_event = $(this),
           whole_event = $(this).closest('.event');
-
-      console.log('REVOMOORE');
-      console.log(my_event);
-      console.log(whole_event);
       $.ajax({
         url: "/schedule_entries/destroy?user=" + user + "&event_id=" + my_event.attr('id'),
         cache: false,
         success: function(html){
-          whole_event.slideUp(200);
+          console.log($("#user_schedule_title").val());
+          if($("#user_schedule_title").val() !== undefined ){
+            whole_event.slideUp(200);
+          } else{
+            my_event.html("REMOVED!");
+            console.log(whole_event);
+            whole_event.removeClass('added');
+          };
         }
       });
     });

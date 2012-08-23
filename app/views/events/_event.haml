@@ -1,5 +1,9 @@
 %div{:class => @user.schedule.schedule_entries.find_by_event_id(event.id).is_a?(ScheduleEntry) ? "event added" : "event" }
   .peek
+    .day_short
+      = event.start_time.strftime("%a")
+    .venue_short
+      = event.venue.code
     %a{ :class => "event_title"} 
       =event.name
     - if @user
@@ -16,7 +20,7 @@
     = event.description
     %br
     Start Time:
-    = event.start_time
+    = event.start_time.strftime("%A, %l:%M%p")
     %br
     End Time:
-    = event.end_time
+    = event.end_time.strftime("%A, %l:%M%p")

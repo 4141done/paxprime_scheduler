@@ -26,6 +26,17 @@ namespace :events do
     return panelists_for_event
   end
 
+  def panelists_present? headers
+    presence = false
+    headers.each do |header|
+      presence = header.respond_to?(:text) && header.text == "Panelists:"
+      if presence == true
+        return presence
+      end
+    end
+    return presence
+  end
+
   def parse_day day, agent, page
     dates_for_days  = { "friday" => "8/31", "saturday" => "9/1", "sunday" => "9/2" }
     current_day = page.search("##{day}")
@@ -49,6 +60,7 @@ namespace :events do
 
         full_event = page.search(".full.event")
         description_and_panelists = full_event.search("p")
+        headers = full_event.search("h4")
 
         # populate event description and panelists
         if description_and_panelists.first && description_and_panelists.first.respond_to?(:text)
@@ -56,9 +68,10 @@ namespace :events do
         end
         
         panelists = []
-
-        if description_and_panelists[1] && description_and_panelists[1].respond_to?(:text)
-         panelists = parse_panelists description_and_panelists[1].text
+        if panelists_present? headers
+          if description_and_panelists[1] && description_and_panelists[1].respond_to?(:text)
+           panelists = parse_panelists description_and_panelists[1].text
+          end
         end
         new_event.panelists = panelists
 

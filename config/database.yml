@@ -24,3 +24,19 @@ production:
   database: db/production.sqlite3
   pool: 5
   timeout: 5000
+
+# development:
+#   host: localhost
+#   adapter: postgresql
+#   database: pax_sched_dev
+#   encoding: UTF8
+
+# test:
+#   adapter: postgresql
+#   database: pax_sched_test
+#   encoding: UTF8
+
+# production:
+#   adapter: postgresql
+#   database: pax_sched_prod
+#   encoding: UTF8

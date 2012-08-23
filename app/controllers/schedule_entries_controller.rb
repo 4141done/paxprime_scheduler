@@ -15,11 +15,11 @@ class ScheduleEntriesController < ApplicationController
   def destroy
     @user = User.find_by_identifier(params[:user])
     if @user
-      ap params[:event_id].to_i
-      entry = ScheduleEntry.new
-      entry.event = Event.find params[:event_id].to_i
-      @user.schedule.schedule_entries << entry
-      @user.save!
+      entry = @user.schedule_entries.find_by_event_id params[:event_id].to_i
+      if entry
+        ScheduleEntry.destroy(entry.id)
+      end
     end
+    render :nothing => true
   end
 end

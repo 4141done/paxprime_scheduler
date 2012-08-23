@@ -45,6 +45,7 @@ body{
 
   #title{
     font-weight: 999;
+    margin-bottom: none;
   }
 
   #search_box {
@@ -62,8 +63,7 @@ body{
   }
 
   #days{
-    margin: none;
-    padding:none;
+    width: 120px;
     font-size: 25px !important;
     #search_friday {
       background-color: $red;
@@ -91,7 +91,7 @@ body{
     border: 10px solid $light-black;
     border-radius: 10px;
     margin-bottom: 5px;
-    width: 1000px;
+    width: 1200px;
 
     .event_content {
       padding:5px;
@@ -108,6 +108,18 @@ body{
         text-decoration: none !important;
         color:white;
         margin-bottom:5px;
+      }
+      .venue_short{
+        padding: 2px;
+        border-radius: 10px;
+        display: inline;
+        background-color: $light-blue;
+      }
+      .day_short{
+        padding: 2px;
+        border-radius: 10px;
+        display: inline;
+        background-color: $base-teal;
       }
       .event_title {
       }

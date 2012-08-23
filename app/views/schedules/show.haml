@@ -1,3 +1,9 @@
-%h1
-  = "#{@user.identifier}'s events"
+%h1#user_schedule_title
+  = "#{@user.identifier}'s schedule"
+#send_to_friend
+  = form_tag '/shared_schedules/create', :remote => true, id: "send_schedule_form", :user => @cuser do
+    = hidden_field_tag "user", @user.identifier
+    = text_field_tag :query, nil, :id => "send_user_name"
+    = submit_tag "Share love!", :id => "send_button"
+
 =render @schedule

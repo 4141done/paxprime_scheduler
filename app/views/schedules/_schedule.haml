@@ -1,3 +1,11 @@
-- schedule.schedule_entries.each do |entry|
-  = render entry.event
-  = entry.notes
+%h2 Friday
+- schedule.friday.each do |event|
+  = render event
+
+%h2 Saturday
+- schedule.saturday.each do |event|
+  = render event
+
+%h2 Sunday
+- schedule.sunday.each do |event|
+  = render event

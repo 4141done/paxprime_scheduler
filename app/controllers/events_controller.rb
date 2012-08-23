@@ -13,10 +13,6 @@ class EventsController < ApplicationController
     @events = Event.find_with_filters options
 
     @events = Event.all unless @events.present?
-    ap "HERE THEY BE"
-    @events.each do |e|
-      ap @user.schedule.schedule_entries.find_by_event_id(e.id).is_a?(ScheduleEntry) ? "event added" : "event"
-    end
     render :layout => false
   end
 
@@ -29,11 +25,7 @@ class EventsController < ApplicationController
     @results.each do |event|
       @events << event
     end
-    ap @events
-    @events.each do |e|
-      ap @user.schedule.schedule_entries.find_by_event_id(e.id)
-      ap @user.schedule.schedule_entries.find_by_event_id(e.id).is_a?(ScheduleEntry) ? "event added" : "event"
-    end
+
     render :layout => false, :template => 'events/show'
   end
 end

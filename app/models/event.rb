@@ -2,6 +2,7 @@ class Event < ActiveRecord::Base
   # todo: account for all day events so that they don't conflict
   belongs_to :venue
   has_and_belongs_to_many :panelists
+  default_scope :order => 'start_time DESC'
 
   def day
     start_time.strftime("%^A")
@@ -24,10 +25,8 @@ class Event < ActiveRecord::Base
         events = Event.find_using_panelist panelist
       end
     end
-
-
-
-    return events 
+    
+    return events
   end
 
 
