@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
     possible_identifier = "#{link1[rand(link1.length)]}_#{link2[rand(link2.length)]}"
 
     if possible_identifier == nil
-      possible_identifier = "#{(link1[rand(link1.length)]}_#{link2[rand(link2.length)])}"
+      possible_identifier = "#{(link1[rand(link1.length)])}_#{link2[rand(link2.length)]}"
     end
 
     return possible_identifier.scan(/\w+/).join("_").downcase
