@@ -17,16 +17,6 @@ body{
   }
 }
 
-.divLeft {
-  display:block;
-  float: left;
-}
-
-.divRight {
-  display:block;
-  float: right;
-}
-
 .added {
   background-color: green !important;
   border: 10px solid green !important;
@@ -37,6 +27,18 @@ body{
 }
 
 #nav_bar {
+  select{
+    width: 500px;
+  }
+  table{
+    background-color: $light-blue;
+    width: 1250px;
+    border: 3px solid $light-black;
+    tr{
+      td{
+      }
+    }
+  }
   #welcome_message {
     #close_welcome_button {
 
@@ -44,8 +46,10 @@ body{
   }
 
   #title{
-    font-weight: 999;
-    margin-bottom: none;
+    width:250px;
+  }
+
+  #my_schedule{
   }
 
   #search_box {
@@ -63,6 +67,7 @@ body{
   }
 
   #days{
+    height: 100px;
     width: 120px;
     font-size: 25px !important;
     #search_friday {

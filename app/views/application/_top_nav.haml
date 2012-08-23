@@ -5,20 +5,25 @@
       %a{ :id => "close_welcome_button", :style => "height: 40px; width: 100px; background-color: green; border-radius: 10px; padding: 5px;"}
         Kill me
   %h1#title Scheduler
-  %a{:id => "my_schedule", :class => "divLeft"} My Schedule
-  %br
-  #days
-    %a.day{:id => "search_friday" } Friday
-    %br
-    %a.day{:id => "search_saturday" } Saturday
-    %br
-    %a.day{:id => "search_sunday" } Sunday
-    %br
-  #search_container
-    = form_tag '/events/search', :remote => true, id: "search_form", :class => "divRight", :user => @current_user do
-      = hidden_field_tag "user", @current_user.identifier
-      = text_field_tag :query, nil, :id => "search_box"
-      = submit_tag "Search!", :id => "search_button"
-  
-  = select_tag "panelist", options_from_collection_for_select(@panelists, "id", "name")
+  %table
+    %tr
+      %td
+        #days
+          %a.day{:id => "search_friday" } Friday
+          %a.day{:id => "search_saturday" } Saturday
+          %a.day{:id => "search_sunday" } Sunday
+      %td
+        #search_container
+          = form_tag '/events/search', :remote => true, id: "search_form", :user => @current_user do
+            = hidden_field_tag "user", @current_user.identifier
+            = text_field_tag :query, nil, :id => "search_box"
+            = submit_tag "Search!", :id => "search_button"
+      %td{ :colspan => 2, :style => "background-color: green;"}
+        %a{ :id => "my_schedule" } My Schedule
+
+    %tr
+      %td
+        Show by Panelist
+      %td
+        = select_tag "panelist", options_from_collection_for_select(@panelists, "id", "name")
 

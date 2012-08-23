@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   attr_accessible :identifier
   has_one :schedule
   has_many :schedule_entries,  :through => :schedule
+  has_many :shared_schedules
+  
   def self.generate_identifier
     name_material = ["http://seattle.craigslist.org/zip/", "http://seattle.craigslist.org/jjj/", "http://seattle.craigslist.org/ccc/"]
     agent = Mechanize.new
