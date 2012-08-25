@@ -12,7 +12,8 @@
 - @shared_schedules.each do |ss|
   - u = User.find ss.user_id
   -  options << [u.identifier, ss.schedule_id]
-  Shared Schedules from other users
-= select_tag "friend_schedules", options_for_select(options)
+- unless options.length == 1
+  = label_tag "Shared Schedules from other users"
+  = select_tag "friend_schedules", options_for_select(options)
 
 =render @schedule

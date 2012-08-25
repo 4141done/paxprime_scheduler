@@ -8,8 +8,9 @@ gem 'jquery-rails'
 # Bundle edge Rails instead:
 # gem 'Rails', :git => 'git://github.com/rails/rails.git'
 
-# gem 'sqlite3'
-gem 'pg'
+gem 'sqlite3'
+gem 'mysql2'
+# gem 'pg'
 
 
 # Gems used only for assets and not required
