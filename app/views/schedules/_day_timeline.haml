@@ -1,0 +1,17 @@
+%table{:border => 1}
+  %tr
+    - @times.each do |t|
+      %td
+        = t.strftime("%l:%M%p")
+  - @venues.each do |v|
+    %tr
+      %td
+        = v.name
+      - grey = false
+      - @schedule.events_at_venue(v.id).where(:day => day).each do |e|
+        %td{ :colspan => (e.end_time - e.start_time)/1800, :border => 1 }
+          = e.name
+  %tr
+    - @times.each do |t|
+      %td
+        = t.strftime("%l:%M%p")

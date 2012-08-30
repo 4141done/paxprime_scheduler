@@ -2,10 +2,12 @@
   .peek
     .day_short
       = event.start_time.strftime("%a")
+    .start_time_short
+      = event.start_time.strftime("%l:%M%p")
     .venue_short
       = event.venue.code
-    %a{ :class => "event_title"} 
-      =event.name
+    %a{ :class => "event_title", :title => event.name } 
+      =event.name[0..40]
     - if @user
       - if @user.schedule_entries.find_by_event_id(event.id).is_a? ScheduleEntry
         %a.divRight.noUnderline{ :id => event.id, :class => "schedule_remove"} REMOVE

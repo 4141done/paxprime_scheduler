@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120822151509) do
+ActiveRecord::Schema.define(:version => 20120830051446) do
 
   create_table "events", :force => true do |t|
     t.text     "name"
@@ -43,6 +43,14 @@ ActiveRecord::Schema.define(:version => 20120822151509) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "pg_search_documents", :force => true do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
   create_table "schedule_entries", :force => true do |t|
     t.integer "schedule_id"
     t.integer "event_id"
@@ -57,8 +65,9 @@ ActiveRecord::Schema.define(:version => 20120822151509) do
     t.integer  "schedule_id"
     t.integer  "user_id"
     t.text     "message"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "sending_user_id"
   end
 
   create_table "users", :force => true do |t|

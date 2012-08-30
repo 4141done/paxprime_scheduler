@@ -1,1 +1,4 @@
-= render @events
+-if @events.present?
+  = render @events
+-else
+  Aww shit no events!  Search for something that exists more?

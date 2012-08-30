@@ -1,8 +1,10 @@
 class Event < ActiveRecord::Base
+  include PgSearch
+  multisearchable :against => [:name, :description, :day, :start_time]
+
   # todo: account for all day events so that they don't conflict
   belongs_to :venue
   has_and_belongs_to_many :panelists
-  default_scope :order => 'start_time DESC'
 
   def day
     start_time.strftime("%^A")
@@ -29,7 +31,18 @@ class Event < ActiveRecord::Base
     return events
   end
 
+  def conflicts
+    Event.where("? between start_time and end_time
+                  OR ? between start_time and end_time
+                  OR start_time between ? and ?
+                  OR end_time between ? and ?",start_time, end_time, start_time, end_time, start_time, end_time)
+  end
 
-
-
+  def conflicts_in_schedule schedule_id
+    schedule = Schedule.find schedule_id
+    schedule.events.where("? between start_time and end_time
+                  OR ? between start_time and end_time
+                  OR start_time between ? and ?
+                  OR end_time between ? and ?",start_time, end_time, start_time, end_time, start_time, end_time)
+  end
 end

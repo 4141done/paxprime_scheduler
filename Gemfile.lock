@@ -71,6 +71,9 @@ GEM
     nokogiri (1.5.5)
     ntlm-http (0.1.1)
     pg (0.14.0)
+    pg_search (0.5.1)
+      activerecord (>= 3)
+      activesupport (>= 3)
     polyglot (0.3.3)
     rack (1.4.1)
     rack-cache (1.2)
@@ -132,6 +135,7 @@ DEPENDENCIES
   jquery-rails
   mechanize
   pg
+  pg_search
   rails (= 3.2.3)
   sass-rails (~> 3.2.3)
   therubyracer

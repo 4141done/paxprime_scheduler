@@ -19,13 +19,25 @@ class EventsController < ApplicationController
   def search
     @user = User.find_by_identifier params[:user]
     query = params[:query]
-    @results = Event.where "description LIKE ? OR name LIKE ?", "%#{query}%", "%#{query}%" #TODO add panelist search
+    @results = PgSearch.multisearch(query)
+
     @events = []
 
-    @results.each do |event|
-      @events << event
+    @results.each do |pgs|
+      result = pgs.searchable_type.constantize.find pgs.searchable_id
+
+      case result
+      when Event
+        @events << result
+      when Panelist
+        result.events.each do |e|
+          @events << e
+        end
+      end
     end
 
+    @events.uniq!
+    
     render :layout => false, :template => 'events/show'
   end
 end

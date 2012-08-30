@@ -22,6 +22,12 @@ body{
   border: 10px solid green !important;
 }
 
+ .message{
+    padding: 2px;
+    border-radius: 10px;
+    background-color: $light-blue;
+    margin-left: 10px;
+  }
 .noUnderline{
   text-decoration:none
 }
@@ -107,7 +113,7 @@ body{
     }
 
     .peek{
-      color: white;
+      color: white; 
       font-size: 30px;
       a{
         text-decoration: none !important;
@@ -119,20 +125,32 @@ body{
         border-radius: 10px;
         display: inline;
         background-color: $light-blue;
+        margin-right: 10px;
+        width: 100px !important;
       }
       .day_short{
         padding: 2px;
         border-radius: 10px;
         display: inline;
         background-color: $base-teal;
+        margin-right: 5px;
+      }
+      .start_time_short{
+        padding: 2px;
+        border-radius: 10px;
+        display: inline;
+        background-color: $base-teal;
+        margin-right: 5px;
       }
       .event_title {
       }
 
       .schedule_remove{
+        float: right;
       }
 
       .schedule_add{
+        float: right;
       }
     }
   }

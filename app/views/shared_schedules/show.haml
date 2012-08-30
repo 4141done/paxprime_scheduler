@@ -1,0 +1,7 @@
+%h3 
+  = "Schedule sent from #{@sharer.identifier} (if it's green you're there together!)"
+- if @shared_schedule.message.present?
+  %h4 They must really like you. They wrote you a note:
+  .message
+    = @shared_schedule.message
+= render :partial => 'schedules/schedule', :locals => { :schedule => @schedule }

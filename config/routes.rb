@@ -10,6 +10,7 @@ PaxprimeScheduler::Application.routes.draw do
   match 'schedule_entries/destroy' => 'schedule_entries#destroy'
 
   match 'shared_schedules/create' => 'shared_schedules#create', :via => :post
+  match 'shared_schedules/show' => 'shared_schedules#show'
   resources :schedules
 
   # The priority is based upon order of creation:

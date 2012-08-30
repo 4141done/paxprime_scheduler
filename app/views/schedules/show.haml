@@ -1,5 +1,8 @@
 %h1#user_schedule_title
   = "#{@user.identifier}'s schedule"
+  / %br
+  / %a#list_link View List
+  / %a#timeline_link | View Timeline
 #send_to_friend
   = form_tag '/shared_schedules/create', :remote => true, id: "send_schedule_form", :user => @user do
     = hidden_field_tag "user", @user.identifier
@@ -8,12 +11,13 @@
     = label_tag :message, "Tell them how you feel:"
     = text_field_tag :message, nil, :id => "message_for_user"
     = submit_tag "Share love!", :id => "send_button"
-- options = [["back to mine", @schedule.id]]
+- options = [["back to mine", "ARR"]]
 - @shared_schedules.each do |ss|
-  - u = User.find ss.user_id
-  -  options << [u.identifier, ss.schedule_id]
+  - u = User.find ss.sending_user_id
+  -  options << [u.identifier, ss.id]
 - unless options.length == 1
   = label_tag "Shared Schedules from other users"
   = select_tag "friend_schedules", options_for_select(options)
 
-=render @schedule
+#schedule_pane
+  =render @schedule
